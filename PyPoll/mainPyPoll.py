@@ -34,14 +34,14 @@ with open(csvpath) as csvfile:
             voteLi = voteLi + 1
         if row[2] == "O'Tooley":
             voteOTooley = voteOTooley + 1
-    
+
     print("Election Results")
     print("----------------------")
     print("Total Votes:", Num_row)
-    print("Khan", ("{:.3f}".format(100*voteKhan/Num_row)), "%  (", voteKhan, ")" )
-    print("Correy", ("{:.3f}".format(100*voteCorrey/Num_row)), "%  (", voteCorrey, ")" )
-    print("Li", ("{:.3f}".format(100*voteLi/Num_row)), "%  (", voteLi, ")" )
-    print("O'Tooley", ("{:.3f}".format(100*voteOTooley/Num_row)), "%  (", voteOTooley, ")" )
+    print("Khan:", ("{:.3f}".format(100*voteKhan/Num_row)), "%  (", voteKhan, ")" )
+    print("Correy:", ("{:.3f}".format(100*voteCorrey/Num_row)), "%  (", voteCorrey, ")" )
+    print("Li:", ("{:.3f}".format(100*voteLi/Num_row)), "%  (", voteLi, ")" )
+    print("O'Tooley:", ("{:.3f}".format(100*voteOTooley/Num_row)), "%  (", voteOTooley, ")" )
     print("----------------------")
     print("Winner: Khan")
     print("----------------------")
@@ -58,3 +58,9 @@ with open(csvpath) as csvfile:
         text.write('----------------------------------- \n')
         text.write('Winner: Khan \n')
         text.write('----------------------------------- \n')
+
+
+   
+
+
+
