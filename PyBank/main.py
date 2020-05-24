@@ -18,7 +18,10 @@ with open(csvpath) as csvfile:
     Totmonth = 0
     Totsum = 0
     change = 0
+    changeloc1 = ""
+    changeloc2 = ""
     Totchange = 0
+    Averagechange = 0
     Greatestincrease = 0
     Greatestdecrease = 99999999
     
@@ -32,28 +35,32 @@ with open(csvpath) as csvfile:
         if Totmonth > 1:
             change = int(row[1]) - prerow
             Totchange = Totchange + change
+            Averagechange = Totchange / (Totmonth-1)
         prerow = int(row[1])
 
         if change > Greatestincrease:
             Greatestincrease = change
+            changeloc1 = row[0]
+      
         if change < Greatestdecrease:
             Greatestdecrease = change
+            changeloc2 = row[0]
     
     print("Financial Analysis")
     print("-------------------------")
     print("Total Months:", Totmonth)
     print("Total:", Totsum)
-    print("Average Change:", Totchange / (Totmonth-1))
-    print("Greatest Increase in Profits:", "($",Greatestincrease, ")")
-    print("Greatest Decrease in Profits:", "($",Greatestdecrease, ")")
+    print("Average Change:", round(Averagechange, 2))
+    print("Greatest Increase in Profits:", changeloc1, "($",Greatestincrease, ")")
+    print("Greatest Decrease in Profits:", changeloc2, "($",Greatestdecrease, ")")
 
     with open("Budget_Analysis.text", 'w') as text:
         text.write('Financial Analysis \n')
         text.write('-------------------------------  \n')
         text.write(f'Total Months: {Totmonth} \n')
-        text.write(f'Average Change: {"{:.2f}".format(Totchange / (Totmonth-1))} \n')
-        text.write(f'Greatest Increase in Profits: ($ {Greatestincrease} ) \n')
-        text.write(f'Greatest Decrease in Profits: ($ {Greatestdecrease} ) \n')
+        text.write(f'Average Change: {"{:.2f}".format(Averagechange)} \n')
+        text.write(f'Greatest Increase in Profits: {changeloc1}, ($ {Greatestincrease} ) \n')
+        text.write(f'Greatest Decrease in Profits: {changeloc2}, ($ {Greatestdecrease} ) \n')
 
 
 
